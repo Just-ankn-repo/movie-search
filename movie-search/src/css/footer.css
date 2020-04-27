@@ -1,0 +1,45 @@
+.app__footer {
+  width: 100%;
+  height: 40px;
+  padding: 10px 0;
+  background: linear-gradient(#545454, #303030);
+  box-shadow: 0 -5px 6px #303030;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 30px;
+}
+
+.footer__rsschool {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.rsschool__image {
+  width: auto;
+  height: 100%;
+}
+
+.rsschool__text {
+
+}
+
+.footer__github {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.github__image {
+  width: auto;
+  height: 100%;
+}
+
+.github__text {
+
+}
