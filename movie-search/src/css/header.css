@@ -33,7 +33,7 @@
 }
 
 .header__search-container {
-  flex: 2;
+  flex: 1;
 }
 
 .search-container__search-input {

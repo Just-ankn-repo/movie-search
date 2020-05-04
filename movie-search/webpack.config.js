@@ -44,10 +44,10 @@ const config = {
         }]
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx|mjs)$/,
         use: ['babel-loader'/* , 'eslint-loader' */],
         exclude: [
-          /node_modules/
+          /node_modules\/(?!(dom7|swiper)\/).*/
         ]
       },
       {
@@ -147,7 +147,6 @@ const config = {
     new CopyWebpackPlugin([
       // {from: './src/static', to: './'},
       {from: './src/img', to: './assets/img/'},
-      {from: './src/audio', to: './assets/audio/'},
     ]),
   ],
 

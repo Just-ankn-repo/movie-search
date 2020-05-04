@@ -26,7 +26,8 @@
 }
 
 .rsschool__text {
-
+  color: white;
+  margin-left: 10px;
 }
 
 .footer__github {
@@ -41,5 +42,6 @@
 }
 
 .github__text {
-
+  color: white;
+  margin-left: 10px;
 }
