@@ -8,6 +8,7 @@ import '../css/footer.css';
 import $slideTpl from './templates/slideTpl';
 import $on from './listeners/index';
 import $swiper from './slider';
+import $nextPage from './utils/nextPage';
 
 export default class View {
   constructor(_controller) {
@@ -17,7 +18,7 @@ export default class View {
     this.swiper = $swiper;
     this.data = {};
     this.initial = true;
-    this.nextPage = () => this.controller.nextPage();
+    this.nextPage = () => $nextPage(this.controller);
     this.init();
   }
 
@@ -31,11 +32,8 @@ export default class View {
     try {
       this.data = await data;
       const newSlides = Promise.all(this.data.map((element) => this.slideTpl(element)));
-
       if (update === true && await newSlides) this.swiper.removeAllSlides();
-
       this.swiper.appendSlide(await newSlides);
-      this.swiper.on('reachEnd', this.nextPage);
     } catch (error) {
       throw new Error(error);
     }
@@ -44,5 +42,8 @@ export default class View {
       document.getElementById('page-loader').style.display = 'none';
       this.initial = false;
     }
+
+    document.querySelector('.swiper-button-next').classList.remove('mini-loader');
+    this.swiper.on('reachEnd', this.nextPage);
   }
 }

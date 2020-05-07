@@ -45,6 +45,20 @@
   line-height: 30px;
 }
 
+.mini-loader {
+  border: 6px solid #ffffff;
+  border-top: 6px solid #007aff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 4s linear infinite;
+  opacity: 1;
+}
+
+.mini-loader:after {
+  content: '';
+}
+
 .page__loader {
   position: absolute;
   width: 100%;
@@ -57,8 +71,8 @@
 }
 
 .loader {
-  border: 16px solid #aaaaaa; /* Light grey */
-  border-top: 16px solid #ffffff; /* Blue */
+  border: 16px solid #aaaaaa;
+  border-top: 16px solid #ffffff;
   border-radius: 50%;
   width: 120px;
   height: 120px;
