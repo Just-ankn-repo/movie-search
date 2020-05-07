@@ -7,7 +7,9 @@ export default (controller) => {
   const searchInput = document.getElementById('search-input');
 
   const search = () => {
-    controller.setPage(searchInput.value);
+    if (searchInput.value.length !== 0) {
+      controller.setPage(searchInput.value);
+    }
   };
 
   (function onSearch() {
