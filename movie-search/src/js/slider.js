@@ -1,22 +1,19 @@
-import { Swiper, Navigation, Pagination } from './utils/swiper';
+import { Swiper, Navigation } from './utils/swiper';
 
-Swiper.use([Navigation, Pagination]);
+Swiper.use([Navigation]);
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'horizontal',
-  pagination: {
-    el: '.swiper-pagination',
-  },
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-  slidesPerView: 1,
-  spaceBetween: 10,
+  preloadImages: true,
+  updateOnImagesReady: true,
   breakpoints: {
     320: {
       slidesPerView: 1,
-      spaceBetween: 10,
+      spaceBetween: 0,
     },
     480: {
       slidesPerView: 2,
@@ -29,8 +26,8 @@ const swiper = new Swiper('.swiper-container', {
     1080: {
       slidesPerView: 4,
       spaceBetween: 40,
-    }
-  }
+    },
+  },
 });
 
 export default swiper;
