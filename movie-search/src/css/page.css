@@ -3,7 +3,69 @@
   height: 100%;
 }
 
+.page__notification {
+  height: 50px;
+}
+
 .swiper-container {
   width: 100%;
+  height: calc(100vh-190px);
+}
+
+.swiper-wrapper {
+  align-items : center ;
+}
+
+.slide__container {
+  width: auto;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slide__top {
+  text-align: center;
+}
+
+.slide__title {
+  line-height: 30px;
+}
+
+.slide__bottom {
+  text-align: center;
+}
+
+.slide__year {
+  line-height: 30px;
+}
+
+.slide__rating {
+  line-height: 30px;
+}
+
+.page__loader {
+  position: absolute;
+  width: 100%;
   height: calc(100vh-140px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.loader {
+  border: 16px solid #aaaaaa; /* Light grey */
+  border-top: 16px solid #ffffff; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
