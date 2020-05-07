@@ -32,7 +32,13 @@ export default class View {
     try {
       this.data = await data;
       const newSlides = Promise.all(this.data.map((element) => this.slideTpl(element)));
-      if (update === true && await newSlides) this.swiper.removeAllSlides();
+      if (update === true) {
+        document.querySelector('.search-input_loader').style.display = '';
+        if (await newSlides) {
+          this.swiper.removeAllSlides();
+          document.querySelector('.search-input_loader').style.display = 'none';
+        }
+      }
       this.swiper.appendSlide(await newSlides);
     } catch (error) {
       throw new Error(error);

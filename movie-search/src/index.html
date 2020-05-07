@@ -15,8 +15,10 @@
           <a href="/" class="logo__text">Movie Search</a>
         </div>
         <div class="header__search-container">
-          <input class="search-container__search-input" type="text" id="search-input"></input>
-          <span class="search-input__clear"></span>
+          <input class="search-container__search-input" id="search-input" type="search" placeholder="Search movie" autocomplete="off" autofill="off" spellcheck="off"></input>
+          <div class="search-input_loader" style="display: none">
+            <div class="mini-search-loader"></div>
+          </div>
           <button class="search-container__virtual-keyboard"></button>
           <button class="search-container__search-button" id="search-button">Search</button>
         </div>
