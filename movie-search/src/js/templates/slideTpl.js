@@ -11,5 +11,10 @@ export default (_element) => new Promise((resolve) => {
                           <p class="slide__rating">ImDb: ${_element.imdbRating}</p>
                         </div>
                     </div>`;
-  slide.querySelector('.slide__img').onload = () => resolve(slide);
+  const imgElement = slide.querySelector('.slide__img');
+  imgElement.onload = () => resolve(slide);
+  imgElement.onerror = () => {
+    imgElement.src = './assets/img/poster-not-found.png';
+    resolve(slide);
+  };
 });

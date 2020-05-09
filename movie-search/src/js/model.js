@@ -1,4 +1,6 @@
 /* global fetch */
+import $errors from './utils/errors';
+
 export default class Model {
   constructor() {
     this.data = {};
@@ -9,29 +11,31 @@ export default class Model {
   }
 
   async searchMovies(search, page) {
+    let response;
     try {
-      const response = await fetch(`${this.apiUrl}&s=${search}&page=${page}`);
-      this.data = await response.json();
-
+      response = await fetch(`${this.apiUrl}&s=${search}&page=${page}`);
+    } catch (error) {
+      throw new Error($errors.connectionError());
+    }
+    this.data = await response.json();
+    if (!response.ok || this.data.Error) {
+      throw new Error($errors.apiErrors(this.data.Error, search));
+    } else {
       const newData = this.data.Search.map(async (item) => {
         const newItem = item;
         newItem.imdbRating = await this.searchRating(item.imdbID);
         return newItem;
       });
-
       return Promise.all(newData);
-    } catch (error) {
-      return error;
     }
   }
 
   async searchRating(imdbID) {
-    try {
-      const response = await fetch(`${this.apiUrl}&i=${imdbID}&plot=short`);
-      this.rating = await response.json();
-      return this.rating.imdbRating;
-    } catch (error) {
-      throw new Error(error);
+    const response = await fetch(`${this.apiUrl}&i=${imdbID}&plot=short`);
+    this.rating = await response.json();
+    if (this.rating.Response === 'False') {
+      return this.rating.Error;
     }
+    return this.rating.imdbRating;
   }
 }

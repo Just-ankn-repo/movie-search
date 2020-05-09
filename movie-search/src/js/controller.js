@@ -6,17 +6,19 @@ export default class Controller {
     this.view = new View(this);
     this.search = '';
     this.page = 1;
-    this.update = true;
   }
 
-  async setPage(_search) {
+  async setPage(_search, update) {
     if (_search !== null) {
       this.search = _search;
       this.page = 1;
-      this.update = true;
     }
-    this.view.render(await this.model.searchMovies(this.search, this.page), this.update);
-    this.update = false;
+    try {
+      const data = await this.model.searchMovies(this.search, this.page)
+      this.view.render(data, update);
+    } catch (error) {
+      this.view.render(null, update, error);
+    }
   }
 
   nextPage() {

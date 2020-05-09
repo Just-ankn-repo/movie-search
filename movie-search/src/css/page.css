@@ -5,20 +5,30 @@
 
 .page__notification {
   height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.notification__text {
+  font-size: large;
+  font-weight: bold;
+  color: red;
+}
+
 .page__slider {
   display: flex;
 }
 .swiper-button-next {
-  margin-right: 17vw;
+  margin-right: 7vw;
 }
 
 .swiper-button-prev {
-  margin-left: 17vw;
+  margin-left: 7vw;
 }
 
 .swiper-container {
-  width: 60vw;
+  width: 80vw;
   height: calc(100vh-240px);
 }
 

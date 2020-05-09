@@ -18,38 +18,40 @@ export default class View {
     this.swiper = $swiper;
     this.data = {};
     this.initial = true;
+    this.pageNotify = document.querySelector('.notification__text');
     this.nextPage = () => $nextPage(this.controller);
     this.init();
   }
 
   init() {
+    document.getElementById('search-input').focus();
     this.on.$onSearch(this.controller);
   }
 
-  async render(data, update) {
-    this.swiper.off('reachEnd', this.nextPage);
+  async render(data, update, error) {
+    if (error) {
+      this.pageNotify.innerHTML = error.message;
+      document.querySelector('.search-input_loader').style.display = 'none';
+      document.getElementById('page-loader').style.display = 'none';
+      document.querySelector('.swiper-button-next').classList.remove('mini-loader');
+    } else {
+      this.swiper.off('reachEnd', this.nextPage);
 
-    try {
       this.data = await data;
       const newSlides = Promise.all(this.data.map((element) => this.slideTpl(element)));
-      if (update === true) {
-        document.querySelector('.search-input_loader').style.display = '';
-        if (await newSlides) {
-          this.swiper.removeAllSlides();
-          document.querySelector('.search-input_loader').style.display = 'none';
-        }
+      if (await newSlides && update === true) {
+        this.swiper.removeAllSlides();
+        document.querySelector('.search-input_loader').style.display = 'none';
       }
       this.swiper.appendSlide(await newSlides);
-    } catch (error) {
-      throw new Error(error);
-    }
 
-    if (this.initial === true) {
-      document.getElementById('page-loader').style.display = 'none';
-      this.initial = false;
-    }
+      if (this.initial === true) {
+        document.getElementById('page-loader').style.display = 'none';
+        this.initial = false;
+      }
 
-    document.querySelector('.swiper-button-next').classList.remove('mini-loader');
-    this.swiper.on('reachEnd', this.nextPage);
+      document.querySelector('.swiper-button-next').classList.remove('mini-loader');
+      this.swiper.on('reachEnd', this.nextPage);
+    }
   }
 }
