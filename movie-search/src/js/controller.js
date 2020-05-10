@@ -8,7 +8,7 @@ export default class Controller {
     this.page = 1;
   }
 
-  async setPage(_search, update) {
+  async setPage(_search, update, message) {
     const [search, page] = [this.search, this.page];
     if (_search !== null) {
       this.search = _search;
@@ -16,10 +16,10 @@ export default class Controller {
     }
     try {
       const data = await this.model.searchMovies(this.search, this.page);
-      this.view.render(data, update);
+      this.view.render(data, update, message);
     } catch (error) {
       [this.search, this.page] = [search, page];
-      this.view.render(null, false, error);
+      this.view.render(null, false, null, error);
     }
   }
 

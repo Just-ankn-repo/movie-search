@@ -5,9 +5,9 @@ export default class Model {
   constructor() {
     this.data = {};
     this.rating = '';
-    // this.apiKey = 'c246be43';
-    this.apiKey = 'fc604359';
-    this.apiUrl = `http://www.omdbapi.com/?apikey=${this.apiKey}`;
+    this.apiKey = 'c246be43';
+    // this.apiKey = 'fc604359';
+    this.apiUrl = `https://www.omdbapi.com/?apikey=${this.apiKey}`;
   }
 
   async searchMovies(search, page) {

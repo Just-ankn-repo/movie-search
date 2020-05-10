@@ -12,15 +12,16 @@ export default (controller) => {
   const bySearchButton = async () => {
     if (searchInput.value.length !== 0) {
       searchLoader.style.display = '';
-      let text;
-      if (searchInput.value.match(/[а-я]/ig) === null) {
-        text = searchInput.value;
-      } else {
+      let text = searchInput.value;
+      if (searchInput.value.match(/[а-я]/ig) !== null) {
         const translate = await $yaTranslate(searchInput.value);
         text = await translate.text;
-        pageNotify.innerHTML = `Showing results for '${text}'`;
+        const message = `Showing results for '${text}'`;
+        controller.setPage(text, true, message);
+        text = searchInput.value;
+      } else {
+        controller.setPage(text, true);
       }
-      controller.setPage(text, true);
     }
   };
 

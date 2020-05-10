@@ -30,7 +30,7 @@ export default class View {
     this.on.$onSearch(this.controller);
   }
 
-  async render(data, update, error) {
+  async render(data, update, message, error) {
     if (error) {
       this.pageNotify.innerHTML = error.message;
       this.pageNotify.parentElement.classList.add('active');
@@ -38,8 +38,13 @@ export default class View {
       document.getElementById('page-loader').style.display = 'none';
       document.querySelector('.swiper-button-next').classList.remove('mini-loader');
     } else {
-      this.pageNotify.parentElement.classList.remove('active');
-      this.pageNotify.innerHTML = '';
+      if (message) {
+        this.pageNotify.innerHTML = message;
+        this.pageNotify.parentElement.classList.add('active');
+      } else {
+        this.pageNotify.parentElement.classList.remove('active');
+        this.pageNotify.innerHTML = '';
+      }
       this.swiper.off('reachEnd', this.nextPage);
 
       this.data = await data;
