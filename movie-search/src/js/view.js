@@ -37,6 +37,7 @@ export default class View {
       document.getElementById('page-loader').style.display = 'none';
       document.querySelector('.swiper-button-next').classList.remove('mini-loader');
     } else {
+      this.pageNotify.innerHTML = '';
       this.swiper.off('reachEnd', this.nextPage);
 
       this.data = await data;
