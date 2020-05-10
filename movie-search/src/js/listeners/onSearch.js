@@ -7,7 +7,6 @@ export default (controller) => {
   const searchButton = document.getElementById('search-button');
   const searchInput = document.getElementById('search-input');
   const searchLoader = document.querySelector('.search-input_loader');
-  const pageNotify = document.querySelector('.notification__text');
 
   const bySearchButton = async () => {
     if (searchInput.value.length !== 0) {
