@@ -1,7 +1,7 @@
 /* global document */
 
 import $on from '../utils/setListener';
-import $yaTranslate from '../utils/YaTranslateApi'
+import $yaTranslate from '../utils/YaTranslateApi';
 
 export default (controller) => {
   const searchButton = document.getElementById('search-button');

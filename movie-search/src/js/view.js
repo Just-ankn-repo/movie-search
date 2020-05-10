@@ -33,10 +33,12 @@ export default class View {
   async render(data, update, error) {
     if (error) {
       this.pageNotify.innerHTML = error.message;
+      this.pageNotify.parentElement.classList.add('active');
       document.querySelector('.search-input_loader').style.display = 'none';
       document.getElementById('page-loader').style.display = 'none';
       document.querySelector('.swiper-button-next').classList.remove('mini-loader');
     } else {
+      this.pageNotify.parentElement.classList.remove('active');
       this.pageNotify.innerHTML = '';
       this.swiper.off('reachEnd', this.nextPage);
 

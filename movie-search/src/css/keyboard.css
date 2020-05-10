@@ -106,7 +106,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 720px) {
+@media (min-width: 320px) and (max-width: 719px) {
   .page__keyboard {
     display: none;
   }

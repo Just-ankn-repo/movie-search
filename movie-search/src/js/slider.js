@@ -1,6 +1,6 @@
-import { Swiper, Navigation } from './utils/swiper';
+import { Swiper, Navigation, Keyboard } from './utils/swiper';
 
-Swiper.use([Navigation]);
+Swiper.use([Navigation, Keyboard]);
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'horizontal',
@@ -8,22 +8,25 @@ const swiper = new Swiper('.swiper-container', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
+  keyboard: {
+    enabled: true,
+  },
   breakpoints: {
     320: {
       slidesPerView: 1,
       spaceBetween: 0,
     },
-    480: {
+    720: {
       slidesPerView: 2,
-      spaceBetween: 10,
+      spaceBetween: 50,
     },
-    1280: {
+    1024: {
       slidesPerView: 3,
-      spaceBetween: 20,
+      spaceBetween: 50,
     },
-    1920: {
+    1366: {
       slidesPerView: 4,
-      spaceBetween: 30,
+      spaceBetween: 50,
     },
   },
 });

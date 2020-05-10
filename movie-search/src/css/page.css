@@ -3,10 +3,23 @@
 }
 
 .page__notification {
+  position: absolute;
+  width: 100%;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  opacity: 0.8;  
+  z-index: 10;
+  top: -20;
+  animation: hideNotify 0.5s linear;
+  animation-fill-mode: forwards;
+}
+
+.page__notification.active {
+  animation: showNotify 0.5s linear;
+  animation-fill-mode: forwards;
 }
 
 .notification__text {
@@ -18,6 +31,7 @@
 .page__slider {
   display: flex;
 }
+
 .swiper-button-next {
   margin-right: 7vw;
 }
@@ -28,41 +42,56 @@
 
 .swiper-container {
   width: 80vw;
-  height: calc(100vh-240px);
+  height: calc(100vh-140px);
 }
 
 .swiper-wrapper {
   align-items : center ;
 }
 
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .slide__container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: calc(25vw - 150px);
   animation: max 0.6s linear;
 }
 
 .slide__img {
-  width: 100%;
-  height: calc(100vh-450px);
+  width: calc(25vw - 150px);
+  height: calc(100vh-500px);
   object-fit: cover;
 }
 
 .slide__bottom {
   width: 100%;
-  text-align: center;
+  text-align: center;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: white;
   background: linear-gradient(#545454, #303030);
 }
 
 .slide__title {
+  width: auto;
   line-height: 30px;
   color: white;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   padding: 0 10px;
+}
+
+.slide__bottom:hover {
+  min-width: 100%;
+  width: auto;
+  overflow: inherit;
+  text-overflow: inherit;
+  white-space: nowrap;
 }
 
 .slide__year {
@@ -73,6 +102,16 @@
 .slide__rating {
   line-height: 30px;
   color: white;
+}
+
+.raiting__star {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding-right: 5px;
+  background-size: inherit;
+  background-repeat: no-repeat;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAACA0lEQVQ4jY2Ty2sTURTGv3ttZzrjTOLkRRJLVQIu6tJsbEFwUYWsBDsX0Z0PstKFf0EKgn+CCyEViiAzQvduWuOjbTRS0Aaq1YpK00abyaTTZiavcaGBZDGpd3XPd8758R3OvcCAszCbii7MpqKDaoYGJZVw/P6/6y2vGuqVyGXVcCgWnwpG45cGufB04Iv4H8ROJMYIgN/bWzMA0v/tIJdVw8Ho8SlKKQilCEXjKS8XBAA0TeUU8yAhBZRJjh8eHx7izp5JTpyn9C+/0+lg7d2bXLPVKDScZtGqGK8Nv/iFMb1BXj6dzsZGT15UIrGgJMsjHC94TQUAaDh1WHt7tlEu7ZZ+fntOS5Tc3q+ZS5LPzx3WDAAcL0D2HeMtq/ZWMDfTlDG9vW5Vr67ll3THPmgdBmg4dudj/tW8sfxJTaYLTQoAjOntDbt2vVhY1gZBHLveLr5febZhW+xCZrEF9GyBMb1d2f5+z/hVNrwARnnH2N3avMuY3u5qfWvkJH9SVgIhL4CsBIKCFEj2an0AQZAmRFEi3dgyq7ZlVu1uLB6VCC+Kk709fS9xhBfGCKWo71utH1/XVyqlncfgSEWWlTunTo+fE2Ufz/PCqCfAJUh8/rC6albKD5OX5x4RAhcAXBfzef3aDX84ctN1OwmvEbH4ZFrNZDKeH0zT1CMv5q6wXu0Pag/AUypqgkwAAAAASUVORK5CYII=");
 }
 
 .mini-loader {
@@ -118,3 +157,77 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+@keyframes hideNotify {
+  0% { top: 80px; }
+  100% { top: -20px; }
+}
+
+@keyframes showNotify {
+  0% { top: -20px; }
+  100% { top: 80px; }
+}
+
+@media (min-width: 320px) and (max-width: 719px) {
+  .page__notification {
+    top: 90px;
+    height: 50px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .swiper-button-next.mini-loader {
+    display: block;
+  }
+
+  .swiper-container {
+    width: 100vw;
+    height: calc(100vh-200px);
+  }
+
+  .slide__container {
+    width: 100vw;
+    height: calc(100vh-200px);
+  }
+  
+  .slide__img {
+    width: 100vw;
+    height: calc(100vh-290px);
+    object-fit: cover;
+  }
+
+  @keyframes hideNotify {
+    0% { top: 140px; }
+    100% { top: 90px; }
+  }
+  
+  @keyframes showNotify {
+    0% { top: 90px; }
+    100% { top: 140px; }
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1365px) {  
+  .slide__container {
+    width: calc(50vw - 20vw - 50px);
+  }
+  
+  .slide__img {
+    width: calc(50vw - 20vw - 50px);
+    height: calc(100vh-400px);
+  }  
+}
+
+@media (min-width: 1366px) and (max-width: 1919px) {
+  .slide__container {
+    width: calc(25vw - 7vw);
+  }
+  
+  .slide__img {
+    width: calc(25vw - 7vw);
+    height: calc(100vh-400px);
+  }
+}  
