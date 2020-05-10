@@ -86,14 +86,6 @@
   padding: 0 10px;
 }
 
-.slide__bottom:hover {
-  min-width: 100%;
-  width: auto;
-  overflow: inherit;
-  text-overflow: inherit;
-  white-space: nowrap;
-}
-
 .slide__year {
   line-height: 30px;
   color: white;
