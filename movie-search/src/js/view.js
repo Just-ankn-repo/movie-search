@@ -5,6 +5,7 @@ import '../css/style.css';
 import '../css/header.css';
 import '../css/page.css';
 import '../css/footer.css';
+import './virtual-keyboard/index';
 import $slideTpl from './templates/slideTpl';
 import $on from './listeners/index';
 import $swiper from './slider';
@@ -25,6 +26,7 @@ export default class View {
 
   init() {
     document.getElementById('search-input').focus();
+    this.on.$onKeyboard();
     this.on.$onSearch(this.controller);
   }
 
@@ -41,6 +43,7 @@ export default class View {
       const newSlides = Promise.all(this.data.map((element) => this.slideTpl(element)));
       if (await newSlides && update === true) {
         this.swiper.removeAllSlides();
+        this.swiper.update();
         document.querySelector('.search-input_loader').style.display = 'none';
       }
       this.swiper.appendSlide(await newSlides);

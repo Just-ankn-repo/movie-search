@@ -15,11 +15,13 @@
           <a href="/" class="logo__text">Movie Search</a>
         </div>
         <div class="header__search-container">
-          <input class="search-container__search-input" id="search-input" type="search" placeholder="Search movie" autocomplete="off" autofill="off" spellcheck="off"></input>
-          <div class="search-input_loader" style="display: none">
-            <div class="mini-search-loader"></div>
+          <div class="search-container">
+            <input class="search-container__search-input" id="search-input" type="search" placeholder="Search movie" autocomplete="off" autofill="off" spellcheck="false"></input>
+            <div class="search-input_loader" style="display: none">
+              <div class="mini-search-loader"></div>
+            </div>
+            <button class="search-container__virtual-keyboard" id="keyboard-button"></button>
           </div>
-          <button class="search-container__virtual-keyboard"></button>
           <button class="search-container__search-button" id="search-button">Search</button>
         </div>
       </div>
@@ -37,6 +39,9 @@
         <div class="swiper-container">
           <div class="swiper-wrapper" id="swiper-wrapper"></div>
         </div>
+      </section>
+      <section class="page__keyboard" id="page-keyboard">
+        <div class="keyboard"></div>
       </section>
     </main>
     <footer class="app__footer" id="app-footer">
