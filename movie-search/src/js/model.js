@@ -18,7 +18,7 @@ export default class Model {
     }
 
     const moviesList = await response.json();
-
+    console.log(moviesList)
     if (!response.ok || moviesList.Error) {
       throw new Error($errors.apiErrors(moviesList.Error, search));
     } else {

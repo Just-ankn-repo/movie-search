@@ -1,6 +1,6 @@
 
 const errors = {
-  connectionError: () => 'Something went wrong while data load from api!\nCheck your internet connection.',
+  connectionError: () => 'Something went wrong while data load from api!',
   apiErrors: (error, searchText) => {
     let message = '';
     if (error === 'Movie not found!') {
