@@ -8,19 +8,22 @@ export default class Controller {
     this.page = 1;
   }
 
-  async setPage(_search, update, message) {
+  async setPage(_search, _update, _message) {
     const [search, page] = [this.search, this.page];
+    let [update, data, newError] = [_update];
+
     if (_search !== null) {
       this.search = _search;
       this.page = 1;
     }
+    
     try {
-      const data = await this.model.searchMovies(this.search, this.page);
-      this.view.render(data, update, message);
+      data = await this.model.getMovies(this.search, this.page);
     } catch (error) {
-      [this.search, this.page] = [search, page];
-      this.view.render(null, false, null, error);
+      [this.search, this.page, update, newError] = [search, page, false, error];
     }
+
+    this.view.render(data || null, update, _message || null, newError || null);
   }
 
   nextPage() {
