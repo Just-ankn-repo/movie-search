@@ -10,6 +10,7 @@ export default () => {
     if (keyboardElement.classList.contains('active')) {
       keyboardElement.classList.remove('active');
     } else {
+      keyboardElement.style.display = 'block';
       keyboardElement.classList.add('active');
     }
   };
