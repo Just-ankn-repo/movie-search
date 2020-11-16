@@ -1,2 +1,7 @@
-# just-ankn-repo-RS2020Q1
-Private repository for @just-ankn-repo
+Name: "Movie search App"   
+Description: "Study project for rsschool"   
+Lang: "JavaScript"    
+PreviewImage: "https://raw.githubusercontent.com/Just-ankn-repo/movie-search/master/movie-search-preview.jpg"   
+DemoLink: "https://just-ankn-repo-movie-search.now.sh/"    
+SourceLink: "https://github.com/Just-ankn-repo/movie-search"   
+Status: "portfolio"   
